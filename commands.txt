@@ -1,0 +1,15 @@
+//this is some commands used for testing.
+composer require concur/slugify=> used to bring dependency like maven in java 
+php artisan make:controller ExampleController => used to create examplecontroller class in controller class
+php artisan view:clear => used to clear any cached views.
+homepage.blade.php  => used to write html files and is found in resource-> view file.
+<!--@include('header'[name of the file that we put our header tag.]) => this is replaced with the next tag -->
+<x-layout> =>layout is class name on the componnent folde.
+<!--@include('header') => we can use include for footer and header but there is a better way
+of doing this by creating components folder inside view in which all class can access-->
+php artisan migrate:fresh =>: is used to drop all the tables and create from start NOT RECOMENDED
+
+php artisan make:migration add_favorite_color_column => used to add colomun to a 
+table with out changing or DELETING EXIXTING DATA
+
+PHP Namespace Resolver => we download this extention to easly import dependency.
