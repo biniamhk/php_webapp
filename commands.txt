@@ -4,7 +4,7 @@ php artisan make:controller ExampleController => used to create examplecontrolle
 php artisan view:clear => used to clear any cached views.
 homepage.blade.php  => used to write html files and is found in resource-> view file.
 <!--@include('header'[name of the file that we put our header tag.]) => this is replaced with the next tag -->
-<x-layout> =>layout is class name on the componnent folde.
+<x-layout> =>layout is class name that we create on the componnent folder that we use in all pages for header and footer.
 <!--@include('header') => we can use include for footer and header but there is a better way
 of doing this by creating components folder inside view in which all class can access-->
 php artisan migrate:fresh =>: is used to drop all the tables and create from start NOT RECOMENDED
@@ -13,3 +13,12 @@ php artisan make:migration add_favorite_color_column => used to add colomun to a
 table with out changing or DELETING EXIXTING DATA
 
 PHP Namespace Resolver => we download this extention to easly import dependency.
+value="{{old('username')}}" => this is written on a form which is used to hold
+ the value that we put on a form even if we restart or reload the page.
+ $request->session()->regenerate();=> this is used to generate cokies during login.
+
+ @auth
+ put the page that a user supposed to see after login
+ @else
+ put the login or registration page if user didnt login
+ @endauth
