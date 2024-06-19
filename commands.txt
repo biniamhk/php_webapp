@@ -16,9 +16,23 @@ PHP Namespace Resolver => we download this extention to easly import dependency.
 value="{{old('username')}}" => this is written on a form which is used to hold
  the value that we put on a form even if we restart or reload the page.
  $request->session()->regenerate();=> this is used to generate cokies during login.
-
  @auth
  put the page that a user supposed to see after login
  @else
  put the login or registration page if user didnt login
  @endauth
+
+ ==> the strip_tags is used to protect some unwanted attack to our system.
+ $incomingFields['title'] = strip_tags($incomingFields['title']);
+        $incomingFields['body'] = strip_tags($incomingFields['body']);
+
+if(auth()->check()) =>this tag is used to check if user is loggedin.
+it returns true if user is logged in       
+middleware("auth")=> middleware has many functions which helps to
+ manage who accesses the API endpoints.
+ We can create our own middleeare to controll our API access point we create.
+ php artisan make:middleware MustBeLoggedIn
+ Example midldleware(anynameor mustbeloggedin) in this case.
+ php artisan make:policy postpolicy --model=Posts  =>this is used to create a class PostPolicy 
+   which help us to make some authorization for our api.                                            
+ 

@@ -12,7 +12,7 @@
   
           <div class="form-group">
             <label for="post-body" class="text-muted mb-1"><small>Body Content</small></label>
-            <textarea  name="body" id="post-body" class="body-content tall-textarea form-control" type="text">value="{{old('body')}}"</textarea>
+            <textarea  name="body" id="post-body" class="body-content tall-textarea form-control" type="text">{{old('body')}}</textarea>
             @error('title')
             <p class="m-0 small alert-danger shasow-sm">{{$message}}</p>
             @enderror  

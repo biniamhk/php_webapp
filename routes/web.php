@@ -16,15 +16,21 @@ use App\Http\Controllers\PostController;
 |
 */
 //user related route
-Route::get('/', [UserController::class,"showCorrectHomepage"]);
+Route::get('/', [UserController::class,"showCorrectHomepage"])->name("login");
 //Route::get('/', [ExampleController::class,"homepage"]);
 Route::get('/about', [ExampleController::class,"aboutpage"]);
-Route::post('/register', [UserController::class,"register"]);
-Route::post('/login', [UserController::class,"login"]);
-Route::post('/logout', [UserController::class,"logout"]);
+Route::post('/register', [UserController::class,"register"])->middleware("guest");
+Route::post('/login', [UserController::class,"login"])->middleware("guest");
+Route::post('/logout', [UserController::class,"logout"])->middleware("auth");
 
 //blog related route
-Route::get("/create-post", [PostController::class,"showCreateForm"]);
-Route::post("/create-post", [PostController::class,"storeNewPost"]);
+Route::get("/create-post", [PostController::class,"showCreateForm"])->middleware("mustbeloggedin");
+Route::post("/create-post", [PostController::class,"storeNewPost"])->middleware("mustbeloggedin");;
 Route::get("/post/{posted}", [PostController::class,"showSinglePost"]);
+Route::delete("/post/{post}", [PostController::class,"delete"])->middleware("can:delete,post");
+Route::get("/post/{post}/edit", [PostController::class,"showEditForm"])->middleware("can:update,post");
+Route::put("/post/{post}", [PostController::class,"newUpdate"])->middleware("can:update,post");
+
+//profile related routes
+Route::get("/profile/{user:username}", [UserController::class,"profile"])->middleware("auth");
 
